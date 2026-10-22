@@ -7,7 +7,7 @@ import '../models/attendance_model.dart';
 
 class ApiService {
   // Đường link API Conveyor Live được cấu hình chính xác
-  static const String baseUrl = 'https://newgoldgrape4.conveyor.cloud/api';
+  static const String baseUrl = 'https://newshinyski8.conveyor.cloud/api';
 
   static final ApiService _instance = ApiService._internal();
   factory ApiService() => _instance;
