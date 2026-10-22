@@ -191,7 +191,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: const TextStyle(color: AppTheme.textWhite),
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: AppTheme.bgCardLight.withOpacity(0.6),
+                          fillColor: AppTheme.bgCardLight.withValues(alpha: 0.6),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
                           prefixIcon: const Icon(Icons.business_outlined, color: AppTheme.primaryGlow),
                         ),
@@ -208,9 +208,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Container(
                         padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
-                          color: AppTheme.secondary.withOpacity(0.1),
+                          color: AppTheme.secondary.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: AppTheme.secondary.withOpacity(0.3)),
+                          border: Border.all(color: AppTheme.secondary.withValues(alpha: 0.3)),
                         ),
                         child: const Row(
                           children: [
@@ -249,16 +249,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           child: _isLoading
                               ? const CircularProgressIndicator(color: Colors.white)
-                              : const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.mark_email_read_outlined, color: Colors.white, size: 20),
-                                    SizedBox(width: 10),
-                                    Text(
-                                      'GỬI OTP VỀ EMAIL & ĐĂNG KÝ',
-                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
-                                    ),
-                                  ],
+                              : const FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.mark_email_read_outlined, color: Colors.white, size: 20),
+                                      SizedBox(width: 8),
+                                      Text(
+                                        'GỬI OTP VỀ EMAIL & ĐĂNG KÝ',
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                         ),
                       ),

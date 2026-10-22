@@ -247,9 +247,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                           ),
                           child: _isVerifying
                               ? const CircularProgressIndicator(color: Colors.white)
-                              : Text(
-                                  widget.isRegisterFlow ? 'XÁC NHẬN KÍCH HOẠT' : 'XÁC NHẬN & ĐĂNG NHẬP',
-                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
+                              : FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    widget.isRegisterFlow ? 'XÁC NHẬN KÍCH HOẠT' : 'XÁC NHẬN & ĐĂNG NHẬP',
+                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
+                                  ),
                                 ),
                         ),
                       ),

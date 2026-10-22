@@ -139,7 +139,10 @@ class _AntiProxyScreenState extends State<AntiProxyScreen> {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                           ),
                           icon: const Icon(Icons.analytics_outlined, color: AppTheme.primaryGlow),
-                          label: const Text('CHẠY CHẨN ĐOÁN AI REALTIME', style: TextStyle(color: AppTheme.primaryGlow, fontWeight: FontWeight.bold)),
+                          label: const FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text('CHẠY CHẨN ĐOÁN AI REALTIME', style: TextStyle(color: AppTheme.primaryGlow, fontWeight: FontWeight.bold)),
+                          ),
                         ),
                       ),
                     ],

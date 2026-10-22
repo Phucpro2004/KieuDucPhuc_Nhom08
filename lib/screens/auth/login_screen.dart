@@ -256,21 +256,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: _isLoading
                               ? const CircularProgressIndicator(color: Colors.white)
-                              : const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'ĐĂNG NHẬP HỆ THỐNG',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        letterSpacing: 1,
+                              : const FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'ĐĂNG NHẬP HỆ THỐNG',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          letterSpacing: 1,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 10),
-                                    Icon(Icons.arrow_forward_rounded, color: Colors.white, size: 20),
-                                  ],
+                                      SizedBox(width: 8),
+                                      Icon(Icons.arrow_forward_rounded, color: Colors.white, size: 20),
+                                    ],
+                                  ),
                                 ),
                         ),
                       ),

@@ -221,9 +221,12 @@ class _EmployeeCrudScreenState extends State<EmployeeCrudScreen> {
                             backgroundColor: AppTheme.primary,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                           ),
-                          child: Text(
-                            isEdit ? 'LƯU THAY ĐỔI' : 'TẠO HỒ SƠ NHÂN VIÊN',
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              isEdit ? 'LƯU THAY ĐỔI' : 'TẠO HỒ SƠ NHÂN VIÊN',
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
+                            ),
                           ),
                         ),
                       ),

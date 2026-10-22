@@ -493,16 +493,19 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     ),
                     child: _isSubmitting
                         ? const CircularProgressIndicator(color: Colors.white)
-                        : const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.fingerprint_rounded, size: 26, color: Colors.white),
-                              SizedBox(width: 10),
-                              Text(
-                                'XÁC NHẬN CHẤM CÔNG VỊ TRÍ & CẢM BIẾN',
-                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
-                              ),
-                            ],
+                        : const FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.fingerprint_rounded, size: 24, color: Colors.white),
+                                SizedBox(width: 8),
+                                Text(
+                                  'XÁC NHẬN CHẤM CÔNG VỊ TRÍ & CẢM BIẾN',
+                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                                ),
+                              ],
+                            ),
                           ),
                   ),
                 ),
