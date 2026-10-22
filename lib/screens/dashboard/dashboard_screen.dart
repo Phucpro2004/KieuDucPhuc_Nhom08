@@ -83,7 +83,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header Bar (Responsive & No Overflow)
+                // Header Bar
                 Row(
                   children: [
                     CircleAvatar(
@@ -307,30 +307,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
     required Color color,
   }) {
     return GlassCard(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(14),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(title, style: const TextStyle(color: AppTheme.textMuted, fontSize: 12)),
-              Icon(icon, color: color, size: 22),
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const SizedBox(width: 4),
+              Icon(icon, color: color, size: 20),
             ],
           ),
-          const SizedBox(height: 10),
-          Text(
-            value,
-            style: const TextStyle(
-              color: AppTheme.textWhite,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
+          const SizedBox(height: 8),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              value,
+              style: const TextStyle(
+                color: AppTheme.textWhite,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           const SizedBox(height: 4),
           Text(
             subtitle,
-            style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.w500),
+            style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w500),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

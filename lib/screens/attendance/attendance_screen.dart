@@ -22,8 +22,6 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   String _realAddress = 'Đang xác định vị trí thực tế...';
   bool _isGpsEnabled = false;
   bool _isLocating = false;
-  double _distanceMeters = 0.0;
-  bool _isWithinBounds = true;
 
   SensorDataModel? _currentSensors;
   bool _isSubmitting = false;
@@ -259,9 +257,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: BoxDecoration(
-                          color: (_isGpsEnabled ? AppTheme.success : AppTheme.error).withOpacity(0.15),
+                          color: (_isGpsEnabled ? AppTheme.success : AppTheme.error).withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: (_isGpsEnabled ? AppTheme.success : AppTheme.error).withOpacity(0.4)),
+                          border: Border.all(color: (_isGpsEnabled ? AppTheme.success : AppTheme.error).withValues(alpha: 0.4)),
                         ),
                         child: Row(
                           children: [
@@ -351,7 +349,10 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                         ),
                                         icon: const Icon(Icons.gps_fixed, size: 16),
-                                        label: const Text('Bật / Quét Vị Trí', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                                        label: const FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text('Bật / Quét Vị Trí', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(width: 10),
@@ -365,7 +366,10 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                         ),
                                         icon: const Icon(Icons.share_location, size: 16, color: Colors.black),
-                                        label: const Text('Chia Sẻ Vị Trí', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.black)),
+                                        label: const FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text('Chia Sẻ Vị Trí', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.black)),
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -398,7 +402,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                               children: [
                                 Icon(Icons.volume_up_rounded, color: AppTheme.accentGold, size: 20),
                                 SizedBox(width: 6),
-                                Text('Đo Tiếng Ồn', style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+                                Expanded(
+                                  child: Text('Đo Tiếng Ồn', style: TextStyle(color: AppTheme.textMuted, fontSize: 11), maxLines: 1, overflow: TextOverflow.ellipsis),
+                                ),
                               ],
                             ),
                             const SizedBox(height: 10),
@@ -410,6 +416,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                             Text(
                               _currentSensors?.noiseStatus ?? 'Yên tĩnh',
                               style: const TextStyle(color: AppTheme.accentGold, fontSize: 10, fontWeight: FontWeight.w500),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ],
                         ),
@@ -428,7 +436,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                               children: [
                                 Icon(Icons.speed_rounded, color: AppTheme.secondary, size: 20),
                                 SizedBox(width: 6),
-                                Text('Gia Tốc Kế', style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+                                Expanded(
+                                  child: Text('Gia Tốc Kế', style: TextStyle(color: AppTheme.textMuted, fontSize: 11), maxLines: 1, overflow: TextOverflow.ellipsis),
+                                ),
                               ],
                             ),
                             const SizedBox(height: 10),
@@ -440,6 +450,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                             Text(
                               _currentSensors?.motionStatus ?? 'Bàn làm việc',
                               style: const TextStyle(color: AppTheme.secondary, fontSize: 10, fontWeight: FontWeight.w500),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ],
                         ),
@@ -455,23 +467,28 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Row(
-                        children: [
-                          Icon(Icons.compress_rounded, color: AppTheme.primaryGlow, size: 22),
-                          SizedBox(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Áp Suất Khí Quyển (Barometer)', style: TextStyle(color: AppTheme.textWhite, fontWeight: FontWeight.w600, fontSize: 13)),
-                              SizedBox(height: 2),
-                              Text('Chống giả mạo độ cao và vị trí trong nhà', style: TextStyle(color: AppTheme.textMuted, fontSize: 11)),
-                            ],
-                          ),
-                        ],
+                      const Expanded(
+                        child: Row(
+                          children: [
+                            Icon(Icons.compress_rounded, color: AppTheme.primaryGlow, size: 22),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Áp Suất Khí Quyển (Barometer)', style: TextStyle(color: AppTheme.textWhite, fontWeight: FontWeight.w600, fontSize: 13), maxLines: 1, overflow: TextOverflow.ellipsis),
+                                  SizedBox(height: 2),
+                                  Text('Xác thực độ cao vị trí', style: TextStyle(color: AppTheme.textMuted, fontSize: 11), maxLines: 1, overflow: TextOverflow.ellipsis),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                      const SizedBox(width: 8),
                       Text(
                         '${_currentSensors?.pressureHpa ?? 1013.25} hPa',
-                        style: const TextStyle(color: AppTheme.primaryGlow, fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(color: AppTheme.primaryGlow, fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     ],
                   ),
@@ -514,7 +531,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 if (_lastRecord != null) ...[
                   const SizedBox(height: 24),
                   GlassCard(
-                    color: AppTheme.success.withOpacity(0.08),
+                    color: AppTheme.success.withValues(alpha: 0.08),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -522,7 +539,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                           children: [
                             Icon(Icons.verified_rounded, color: AppTheme.success, size: 24),
                             SizedBox(width: 8),
-                            Text('Biên Lai Xác Nhận Chấm Công Hợp Lệ', style: TextStyle(color: AppTheme.success, fontWeight: FontWeight.bold, fontSize: 15)),
+                            Expanded(
+                              child: Text('Biên Lai Xác Nhận Chấm Công Hợp Lệ', style: TextStyle(color: AppTheme.success, fontWeight: FontWeight.bold, fontSize: 14)),
+                            ),
                           ],
                         ),
                         const Divider(color: AppTheme.borderGlass, height: 20),

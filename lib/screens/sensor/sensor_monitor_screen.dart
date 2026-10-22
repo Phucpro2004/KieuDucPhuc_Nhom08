@@ -57,14 +57,14 @@ class _SensorMonitorScreenState extends State<SensorMonitorScreen> {
               children: [
                 // Environment Type Hero Banner
                 GlassCard(
-                  color: AppTheme.secondary.withOpacity(0.15),
+                  color: AppTheme.secondary.withValues(alpha: 0.15),
                   borderColor: AppTheme.secondary,
                   child: Row(
                     children: [
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: AppTheme.secondary.withOpacity(0.2),
+                          color: AppTheme.secondary.withValues(alpha: 0.2),
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(Icons.sensors_rounded, color: AppTheme.secondary, size: 32),
@@ -94,14 +94,14 @@ class _SensorMonitorScreenState extends State<SensorMonitorScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Icon(Icons.graphic_eq_rounded, color: AppTheme.accentGold, size: 24),
-                              SizedBox(width: 8),
-                              Text('1. Cường Độ Tiếng Ồn (Decibel dB)', style: TextStyle(color: AppTheme.textWhite, fontWeight: FontWeight.bold, fontSize: 15)),
-                            ],
+                          Icon(Icons.graphic_eq_rounded, color: AppTheme.accentGold, size: 24),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              '1. Cường Độ Tiếng Ồn (Decibel dB)',
+                              style: TextStyle(color: AppTheme.textWhite, fontWeight: FontWeight.bold, fontSize: 14),
+                            ),
                           ),
                         ],
                       ),
@@ -112,17 +112,17 @@ class _SensorMonitorScreenState extends State<SensorMonitorScreen> {
                         children: [
                           Text(
                             '${_data.noiseDb}',
-                            style: const TextStyle(color: AppTheme.accentGold, fontSize: 42, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: AppTheme.accentGold, fontSize: 38, fontWeight: FontWeight.bold),
                           ),
                           const Padding(
-                            padding: EdgeInsets.only(bottom: 8, left: 4),
-                            child: Text('dB', style: TextStyle(color: AppTheme.textMuted, fontSize: 18, fontWeight: FontWeight.bold)),
+                            padding: EdgeInsets.only(bottom: 6, left: 4),
+                            child: Text('dB', style: TextStyle(color: AppTheme.textMuted, fontSize: 16, fontWeight: FontWeight.bold)),
                           ),
                           const Spacer(),
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
-                              color: AppTheme.accentGold.withOpacity(0.2),
+                              color: AppTheme.accentGold.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(_data.noiseStatus, style: const TextStyle(color: AppTheme.accentGold, fontWeight: FontWeight.bold, fontSize: 11)),
@@ -153,7 +153,12 @@ class _SensorMonitorScreenState extends State<SensorMonitorScreen> {
                         children: [
                           Icon(Icons.directions_run_rounded, color: AppTheme.secondary, size: 24),
                           SizedBox(width: 8),
-                          Text('2. Cảm Biến Chuyển Động (Gia Tốc m/s²)', style: TextStyle(color: AppTheme.textWhite, fontWeight: FontWeight.bold, fontSize: 15)),
+                          Expanded(
+                            child: Text(
+                              '2. Cảm Biến Chuyển Động (Gia Tốc m/s²)',
+                              style: TextStyle(color: AppTheme.textWhite, fontWeight: FontWeight.bold, fontSize: 14),
+                            ),
+                          ),
                         ],
                       ),
                       const SizedBox(height: 16),
@@ -163,17 +168,17 @@ class _SensorMonitorScreenState extends State<SensorMonitorScreen> {
                         children: [
                           Text(
                             '${_data.accelerationMag}',
-                            style: const TextStyle(color: AppTheme.secondary, fontSize: 42, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: AppTheme.secondary, fontSize: 38, fontWeight: FontWeight.bold),
                           ),
                           const Padding(
-                            padding: EdgeInsets.only(bottom: 8, left: 4),
-                            child: Text('m/s²', style: TextStyle(color: AppTheme.textMuted, fontSize: 18, fontWeight: FontWeight.bold)),
+                            padding: EdgeInsets.only(bottom: 6, left: 4),
+                            child: Text('m/s²', style: TextStyle(color: AppTheme.textMuted, fontSize: 16, fontWeight: FontWeight.bold)),
                           ),
                           const Spacer(),
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
-                              color: AppTheme.secondary.withOpacity(0.2),
+                              color: AppTheme.secondary.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(_data.motionStatus, style: const TextStyle(color: AppTheme.secondary, fontWeight: FontWeight.bold, fontSize: 11)),
@@ -203,7 +208,12 @@ class _SensorMonitorScreenState extends State<SensorMonitorScreen> {
                         children: [
                           Icon(Icons.compress_rounded, color: AppTheme.primaryGlow, size: 24),
                           SizedBox(width: 8),
-                          Text('3. Cảm Biến Áp Suất Khí Quyển (Barometer)', style: TextStyle(color: AppTheme.textWhite, fontWeight: FontWeight.bold, fontSize: 15)),
+                          Expanded(
+                            child: Text(
+                              '3. Áp Suất Khí Quyển (Barometer)',
+                              style: TextStyle(color: AppTheme.textWhite, fontWeight: FontWeight.bold, fontSize: 14),
+                            ),
+                          ),
                         ],
                       ),
                       const SizedBox(height: 16),
@@ -213,17 +223,17 @@ class _SensorMonitorScreenState extends State<SensorMonitorScreen> {
                         children: [
                           Text(
                             '${_data.pressureHpa}',
-                            style: const TextStyle(color: AppTheme.primaryGlow, fontSize: 38, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: AppTheme.primaryGlow, fontSize: 34, fontWeight: FontWeight.bold),
                           ),
                           const Padding(
-                            padding: EdgeInsets.only(bottom: 8, left: 4),
-                            child: Text('hPa', style: TextStyle(color: AppTheme.textMuted, fontSize: 18, fontWeight: FontWeight.bold)),
+                            padding: EdgeInsets.only(bottom: 6, left: 4),
+                            child: Text('hPa', style: TextStyle(color: AppTheme.textMuted, fontSize: 16, fontWeight: FontWeight.bold)),
                           ),
                           const Spacer(),
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
-                              color: AppTheme.success.withOpacity(0.2),
+                              color: AppTheme.success.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Text('Bình Thường (Mặt biển)', style: TextStyle(color: AppTheme.success, fontWeight: FontWeight.bold, fontSize: 11)),
